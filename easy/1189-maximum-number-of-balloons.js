@@ -14,10 +14,10 @@ var maxNumberOfBalloons = function (text) {
   const textMap = {};
 
   for (const char of text) {
-    textMap[text] = (textMap[char] || 0) + 1;
+    textMap[char] = (textMap[char] || 0) + 1;
   }
 
-  let result = Infinity;
+  let result = text.length;
 
   for (const key in balloonMap) {
     if (!textMap[key]) return 0;
@@ -27,5 +27,5 @@ var maxNumberOfBalloons = function (text) {
     result = Math.min(result, count);
   }
 
-  return result === Infinity ? 0 : result;
+  return result;
 };
