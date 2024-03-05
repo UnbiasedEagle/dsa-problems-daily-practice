@@ -11,30 +11,19 @@
  * @return {number[]}
  */
 var inorderTraversal = function (root) {
-  if (!root) return [];
   const result = [];
+  let curr = root;
+  const stack = [];
 
-  const stack = [root];
-  const visited = new Set();
-  visited.add(root);
-
-  while (stack.length > 0) {
-    if (
-      stack[stack.length - 1].left &&
-      !visited.has(stack[stack.length - 1].left)
-    ) {
-      const node = stack[stack.length - 1];
-      stack.push(node.left);
-      visited.add(node.left);
-      continue;
+  while (curr || stack.length > 0) {
+    while (curr) {
+      stack.push(curr);
+      curr = curr.left;
     }
-    const node = stack.pop();
-    result.push(node.val);
 
-    if (node.right && !visited.has(node.right)) {
-      stack.push(node.right);
-      visited.add(node.right);
-    }
+    curr = stack.pop();
+    result.push(curr.val);
+    curr = curr.right;
   }
 
   return result;
