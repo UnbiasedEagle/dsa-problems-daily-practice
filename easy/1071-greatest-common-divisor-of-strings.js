@@ -15,7 +15,6 @@ var gcdOfStrings = function (str1, str2) {
     biggerWord = str2;
   }
 
-  let result;
   let currentWord = smallerWord;
 
   while (currentWord.length > 0) {
