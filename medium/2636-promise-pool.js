@@ -14,7 +14,5 @@ var promisePool = async function (functions, n) {
   const currentlyRunning = wrapperFunctions.slice(0, n);
   waitingPromises.push(...wrapperFunctions.slice(n));
 
-  return Promise.all(currentlyRunning);
+  return Promise.all(currentlyRunning.map((fn) => fn()));
 };
-
-TrAQvZybEd99kqrp;
